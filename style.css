@@ -379,6 +379,7 @@ a.btn:nth-child(2)::before {
     height: auto;
     border-radius: 50px;
 }
+
 /* .about-content{
     display: flex;
     flex-direction: column;
@@ -428,26 +429,28 @@ a.btn:nth-child(2)::before {
     animation: morph 6s linear infinite;
 }
 
-.info-about1{
+.info-about1 {
     left: 0%;
     top: 34%;
 }
 
-.info-about2{
+.info-about2 {
     left: 76%;
     top: 15%;
 }
 
-.info-about3{
+.info-about3 {
     left: 61%;
     top: 70%;
 }
 
-.image-about span{
+.image-about span {
     font-size: 1.2rem;
     font-weight: 600;
 }
-.image-about span,p{
+
+.image-about span,
+p {
     color: var(--bg-color);
 
 }
@@ -456,19 +459,19 @@ a.btn:nth-child(2)::before {
 /* ----------SERVICES SECTION---------- */
 
 
-.main-text{
+.main-text {
     width: 100%;
     text-align: center;
     margin-bottom: 2rem;
     color: var(--hover-color);
 }
 
-.main-text h2{
+.main-text h2 {
     font-size: var(--normal-font);
     font-weight: 700;
 }
 
-.main-text span{
+.main-text span {
     color: #fdfdfd;
     font-size: .8rem;
     font-weight: 200;
@@ -476,7 +479,7 @@ a.btn:nth-child(2)::before {
     text-transform: uppercase;
 }
 
-.section-services{
+.section-services {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -484,7 +487,7 @@ a.btn:nth-child(2)::before {
     grid-gap: 2rem;
 }
 
-.section-services .service-box{
+.section-services .service-box {
     flex: 1 1 18rem;
     padding: 2rem 1rem 2rem;
     text-align: center;
@@ -493,16 +496,16 @@ a.btn:nth-child(2)::before {
     border-radius: 10px;
 }
 
-.service-btn{
+.service-btn {
     width: auto;
     justify-content: center;
 }
 
-.service-box:hover{
+.service-box:hover {
     transform: translateY(-.7rem);
 }
 
-.service-icon{
+.service-icon {
     border: 2px solid var(--hover-color);
     padding: 2rem;
     background: var(--bg-color);
@@ -516,12 +519,12 @@ a.btn:nth-child(2)::before {
     outline: 3px solid var(--bg-color);
 }
 
-.service-box h3{
+.service-box h3 {
     margin-top: 10%;
     font-size: 1.5rem;
 }
 
-.service-box p{
+.service-box p {
     margin: .5rem 0 1.5rem 0;
     font-weight: 300;
     letter-spacing: 1px;
@@ -531,20 +534,132 @@ a.btn:nth-child(2)::before {
 
 
 
+/* ----------SkIllS SECTION---------- */
 
 
+.skills {
+    background: var(--secon-bg-color);
+}
 
+.skill-main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 30px;
+    grid-column-gap: 50px;
+}
 
+.skill-bar {
+    margin-bottom: 2.3rem;
+}
 
+.skill-main h3 {
+    margin-bottom: 2rem;
+    font-size: var(--normal-font);
+    text-align: center;
+}
 
+.skill-left .skill-bar .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
 
+.skill-left .skill-bar .bar {
+    width: 100%;
+    height: 10px;
+    background: var(--bg-color);
+    border-radius: 25px;
+    margin-top: 10px;
+    position: relative;
+}
 
+.skill-bar .bar span {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: var(--hover-color);
+    border-radius: 25px;
+    box-shadow: var(--neon-box-shadow);
+}
 
+.skill-bar .bar .html {
+    width: 45.23%;
+    animation: html 2s;
+}
 
+.skill-bar .bar .css {
+    width: 30.69%;
+    animation: css 3s;
+}
 
+.skill-bar .bar .javascript {
+    width: 24.08%;
+    animation: javascript 4s;
+}
 
+.skill-bar .bar .bootstrap {
+    width: 12%;
+    animation: bootstrap 5s;
+}
 
+/* Skill Right */
 
+.professional {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.box {
+    position: relative;
+    margin: 10px 0;
+    flex: 1 1 15rem;
+    text-align: center;
+}
+
+.box-text {
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.box .text big {
+    font: 400;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box .text small {
+    display: block;
+    font-weight: 600;
+}
+
+.circle {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle .points {
+    width: 2px;
+    height: 10px;
+    background-color: var(--bg-color);
+    position: absolute;
+    border-radius: 3px;
+    transform: rotate(calc(var(--i)*var(--rot)))translateY(-45px);
+}
+
+.points.marked{
+    animation: glow 0.04s linear forwards;
+    animation-delay: calc(var(--i)*0.05s);
+}
 
 
 
@@ -552,18 +667,73 @@ a.btn:nth-child(2)::before {
 
 /* ----------@keyframes---------- */
 
-@keyframes morph{
+@keyframes morph {
+
     0%,
-    100%{
+    100% {
         border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%
     }
-    30%{
+
+    30% {
         border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%
     }
-    60%{
+
+    60% {
         border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%
     }
-    80%{
+
+    80% {
         border-radius: 69% 31% 66% 34% / 21% 30% 70% 79%
+    }
+}
+
+@keyframes html {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 45.23%;
+    }
+}
+
+@keyframes css {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 30.69%;
+    }
+}
+
+@keyframes javascript {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 24.08%;
+    }
+}
+
+@keyframes bootstrap {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 12%;
+    }
+}
+
+@keyframes glow {
+    0%{
+        background: var(--bg-color);
+        box-shadow: none;
+    }
+    100%{
+        background: var(--hover-color);
+        box-shadow: var(--neon-box-shadow);
     }
 }
