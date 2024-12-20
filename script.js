@@ -43,26 +43,80 @@ setInterval(changeText, 3000);
 
 // CIRCLE SKILL///////////////////////////////////////
 
+// const circles = document.querySelectorAll(".circle");
+// circles.forEach(elem => {
+//     var dots = elem.getAttribute("data-dots");
+//     var marked = elem.getAttribute("data-percent");
+//     var percent = Math.floor(dots * marked / 100);
+//     var points = "";
+//     var rotate = 360 / dots;
+
+
+//     for (let i = 0; i < dots; i++) {
+
+//         points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
+//     }
+//     elem.innerHTML = points;
+
+//     const pointsMarked = elem.querySelectorAll('.points');
+//     for (let i = 0; i < percent; i++) {
+//         pointsMarked[i].classList.add('marked');
+//     }
+// });
+
+
+
 const circles = document.querySelectorAll(".circle");
-circles.forEach(elem => {
-    var dots = elem.getAttribute("data-dots");
-    var marked = elem.getAttribute("data-percent");
-    var percent = Math.floor(dots * marked / 100);
-    var points = "";
-    var rotate = 360 / dots;
 
+function refreshCircles() {
+    circles.forEach(elem => {
+        var dots = elem.getAttribute("data-dots");
+        var marked = elem.getAttribute("data-percent");
+        var percent = Math.floor(dots * marked / 100);
+        var points = "";
+        var rotate = 360 / dots;
 
-    for (let i = 0; i < dots; i++) {
+        // Generate points for the circle
+        for (let i = 0; i < dots; i++) {
+            points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
+        }
+        elem.innerHTML = points;
 
-        points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
-    }
-    elem.innerHTML = points;
-    
-    const pointsMarked = elem.querySelectorAll('.points');
-    for (let i = 0; i < percent; i++) {
-        pointsMarked[i].classList.add('marked');
+        const pointsMarked = elem.querySelectorAll('.points');
+        // Mark the points based on percentage
+        for (let i = 0; i < percent; i++) {
+            pointsMarked[i].classList.add('marked');
+        }
+    });
+}
+
+// Function to check if the element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top >= 0 && rect.bottom <= window.innerHeight;
+}
+
+// Add scroll event listener to refresh skill circles on scroll
+window.addEventListener("scroll", function () {
+    const skillSection = document.querySelector(".skill-right");
+
+    if (isInViewport(skillSection)) {
+        refreshCircles();
     }
 });
+
+// Optionally, trigger refresh when the page loads (if already in view)
+window.addEventListener("load", function () {
+    const skillSection = document.querySelector(".skill-right");
+    if (isInViewport(skillSection)) {
+        refreshCircles();
+    }
+});
+
+
+
+
+
 
 
 // MIS IT UP PORTFOLIO SECTION////////////////////////////////////////////
@@ -78,7 +132,7 @@ let section = document.querySelectorAll('section');
 
 function activeMenu() {
     let len = section.length;
-    while (--len && window.scrollY + 97 < section[len].offsetTop) {}
+    while (--len && window.scrollY + 97 < section[len].offsetTop) { }
     menuLi.forEach(sec => sec.classList.remove("active"));
     menuLi[len].classList.add("active");
 }
@@ -90,7 +144,7 @@ window.addEventListener("scroll", activeMenu);
 // STICKY NAVBAR////////////////////////////////////////////
 
 const header = document.querySelector("header");
-window.addEventListener("scroll", function(){
+window.addEventListener("scroll", function () {
     header.classList.toggle("sticky", window.scrollY > 50);
 });
 
@@ -114,7 +168,7 @@ window.onscroll = () => {
 
 // PARALLAX ////////////////////////////////////////////
 
-const observer = new IntersectionObserver ((entries)=>{
+const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('show-items');
@@ -125,13 +179,13 @@ const observer = new IntersectionObserver ((entries)=>{
 });
 
 const scrollScale = document.querySelectorAll(".scroll-scale");
-scrollScale.forEach((el) => observer.observe (el));
+scrollScale.forEach((el) => observer.observe(el));
 
 
 const scrollBottom = document.querySelectorAll(".scroll-bottom");
-scrollBottom.forEach((el) => observer.observe (el));
+scrollBottom.forEach((el) => observer.observe(el));
 
 
 const scrollTop = document.querySelectorAll(".scroll-top");
-scrollTop.forEach((el) => observer.observe (el));
+scrollTop.forEach((el) => observer.observe(el));
 
