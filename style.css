@@ -576,6 +576,9 @@ p {
     background: var(--hover-color);
     border-radius: 25px;
     box-shadow: var(--neon-box-shadow);
+    width: 0;
+    /* Initially, width is 0 */
+    animation-timing-function: ease-in-out;
 }
 
 .skill-bar .bar .html {
@@ -963,13 +966,13 @@ footer a i {
 
 @keyframes slideAnimation {
     0% {
-       opacity: 0;
-       transform: translateY(100px);
+        opacity: 0;
+        transform: translateY(100px);
     }
 
     100% {
         opacity: 1;
-       transform: translateY(0px);
+        transform: translateY(0px);
     }
 }
 

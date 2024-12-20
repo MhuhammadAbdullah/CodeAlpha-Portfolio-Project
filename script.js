@@ -114,6 +114,40 @@ window.addEventListener("load", function () {
 });
 
 
+// SKILL LEFT////////////////////////////////////////////////////
+
+
+// Function to check if the element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top <= window.innerHeight && rect.bottom >= 0;
+}
+
+// Function to animate skill bars
+function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-bar');
+
+    skillBars.forEach(bar => {
+        const percentage = parseFloat(bar.querySelector('.info p:last-child').innerText);
+        const barSpan = bar.querySelector('span');
+
+        // Animate the width of the skill bar
+        barSpan.style.width = 0; // reset the width before the animation starts
+
+        // When the skill-bar comes into view, animate it
+        if (isInViewport(bar)) {
+            barSpan.style.transition = `width 2s ease-in-out`; // set transition for animation
+            barSpan.style.width = `${percentage}%`;
+        }
+    });
+}
+
+// Add scroll event listener to trigger the animation when skill-bars come into view
+window.addEventListener('scroll', animateSkillBars);
+
+// Optionally, trigger animation when the page loads (if the section is already in view)
+window.addEventListener('load', animateSkillBars);
+
 
 
 
