@@ -223,3 +223,77 @@ scrollBottom.forEach((el) => observer.observe(el));
 const scrollTop = document.querySelectorAll(".scroll-top");
 scrollTop.forEach((el) => observer.observe(el));
 
+
+
+
+
+// CONTACT FORM///////////////////////////////////////////////////////
+
+// document.getElementById("sendMessageButton").addEventListener("click", function () {
+//     const form = document.getElementById("contactForm");
+
+//     // Collect form data
+//     const formData = {
+//         name: form.name.value,
+//         email: form.email.value,
+//         address: form.address.value,
+//         phone: form.phone.value,
+//         message: form.message.value,
+//     };
+
+//     // Send email using EmailJS
+//     emailjs
+//         .send("service_ja7zjyr", "template_uoergdo", formData)
+//         .then((response) => {
+//             console.log("SUCCESS!", response.status, response.text);
+//             document.getElementById("responseMessage").innerText =
+//                 "Your message has been sent successfully!";
+//             form.reset(); // Reset form fields after successful submission
+//         })
+//         .catch((error) => {
+//             console.error("FAILED...", error);
+//             document.getElementById("responseMessage").innerText =
+//                 "Failed to send your message. Please try again.";
+//         });
+// });
+
+document.getElementById("sendMessageButton").addEventListener("click", function () {
+    const form = document.getElementById("contactForm");
+
+    // Collect form data
+    const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        address: form.address.value,
+        phone: form.phone.value,
+        message: form.message.value,
+    };
+
+    // Send email using EmailJS
+    emailjs
+        .send("service_ja7zjyr", "template_uoergdo", formData)
+        .then((response) => {
+            console.log("SUCCESS!", response.status, response.text);
+
+            // Display success alert using SweetAlert
+            Swal.fire({
+                icon: "success",
+                title: "Message Sent",
+                text: "Your message has been sent successfully!",
+                confirmButtonText: "OK",
+            });
+
+            form.reset(); // Reset form fields after successful submission
+        })
+        .catch((error) => {
+            console.error("FAILED...", error);
+
+            // Display error alert using SweetAlert
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Failed to send your message. Please try again.",
+                confirmButtonText: "OK",
+            });
+        });
+});
