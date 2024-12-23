@@ -297,3 +297,5 @@ document.getElementById("sendMessageButton").addEventListener("click", function 
             });
         });
 });
+
+
