@@ -275,12 +275,20 @@ section {
     background: var(--hover-color);
 }
 
-.social-icons {
+/* .social-icons {
     margin-top: 8rem;
     display: flex;
     justify-content: space-between;
     width: 220px;
     height: 40px;
+} */
+.social-icons {
+    margin-top: 8rem;
+    display: flex;
+    justify-content: start;
+    width: 220px;
+    height: 40px;
+    gap: 10px;
 }
 
 .social-icons a {
