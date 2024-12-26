@@ -257,17 +257,81 @@ scrollTop.forEach((el) => observer.observe(el));
 //         });
 // });
 
+
+
+
+
+
+// document.getElementById("sendMessageButton").addEventListener("click", function () {
+//     const form = document.getElementById("contactForm");
+
+//     // Collect form data
+//     const formData = {
+//         name: form.name.value,
+//         email: form.email.value,
+//         address: form.address.value,
+//         phone: form.phone.value,
+//         message: form.message.value,
+//     };
+
+//     // Send email using EmailJS
+//     emailjs
+//         .send("service_ja7zjyr", "template_uoergdo", formData)
+//         .then((response) => {
+//             console.log("SUCCESS!", response.status, response.text);
+
+//             // Display success alert using SweetAlert
+//             Swal.fire({
+//                 icon: "success",
+//                 title: "Message Sent",
+//                 text: "Your message has been sent successfully!",
+//                 confirmButtonText: "OK",
+//             });
+
+//             form.reset(); // Reset form fields after successful submission
+//         })
+//         .catch((error) => {
+//             console.error("FAILED...", error);
+
+//             // Display error alert using SweetAlert
+//             Swal.fire({
+//                 icon: "error",
+//                 title: "Error",
+//                 text: "Failed to send your message. Please try again.",
+//                 confirmButtonText: "OK",
+//             });
+//         });
+// });
+
+
+
+
+
+
+
+
 document.getElementById("sendMessageButton").addEventListener("click", function () {
     const form = document.getElementById("contactForm");
 
     // Collect form data
     const formData = {
-        name: form.name.value,
-        email: form.email.value,
-        address: form.address.value,
-        phone: form.phone.value,
-        message: form.message.value,
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        address: form.address.value.trim(),
+        phone: form.phone.value.trim(),
+        message: form.message.value.trim(),
     };
+
+    // Check if all fields are filled
+    if (!formData.name || !formData.email || !formData.message) {
+        Swal.fire({
+            icon: "warning",
+            title: "Missing Information",
+            text: "Please fill in all required fields (Name, Email, and Message).",
+            confirmButtonText: "OK",
+        });
+        return; // Stop execution if fields are empty
+    }
 
     // Send email using EmailJS
     emailjs
